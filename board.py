@@ -2,7 +2,7 @@ import tkinter as t
 import tkinter.font
 
 
-# noinspection PyUnresolvedReferences
+
 def resetBoard():
     turn.set(0)
 
@@ -25,7 +25,7 @@ def resetBoard():
 def add(x, y):
     # TO DO: add player check (red can play red, etc)
     addAtom(x, y)
-    passTurn()
+    nextPLayer()
 
 
 def addAtom(x, y):
@@ -38,12 +38,13 @@ def addAtom(x, y):
     if value == maxSize(x, y):
         btn[x][y]["bg"] = "black"
         val[x][y].set(0)
-        expand(x, y)
+        btn[x][y].flash()
+        explode(x, y)
     else:
         val[x][y].set(value)
 
 
-def expand(x, y):
+def explode(x, y):
     if x - 1 >= 0:
         # left
         addAtom(x - 1, y)
@@ -67,21 +68,21 @@ def maxSize(x, y):
     """
     size = 4
     if x == rowSize - 1 or x == 0:
-        size = size - 1
+        size -= 1
     if y == colSize - 1 or y == 0:
-        size = size - 1
+        size -= 1
     return size
 
 
-def passTurn():
-    # increment move if a valid one is made to give chance to next player
+def nextPLayer():
+
     turn.set(turn.get() + 1)
 
 
 
 window = t.Tk()
 
-# required font style
+# font style
 fontForGame = tkinter.font.Font(family='Times', size=12, weight='bold')
 
 # it's just an integer with more options/functions
@@ -90,9 +91,9 @@ turn = t.IntVar()
 frame = t.Frame(window)
 frame.pack()
 
-# set the dimensions of the board
-rowSize = 7
-colSize = 7
+# custom game details
+rowSize = 6
+colSize = 6
 
 playersCount = 2
 color = ["blue", "violet"]
