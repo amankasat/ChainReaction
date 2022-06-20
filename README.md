@@ -1,12 +1,14 @@
 # Chain-Reaction
 
-player identity separate
+TO DO:
 
-can only add to own cell or empty cell
+player identity separate : done
 
-player switiching
+can only add to own cell or empty cell : done
+ 
+player switiching : done
 
-connect frontend and backend (need to pass player identity and cell position)
+connect frontend and backend (need to pass player identity and cell position) : done
 
-beautify the board
+beautify the board : 
 
